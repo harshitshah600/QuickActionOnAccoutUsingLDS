@@ -1,0 +1,29 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <aura:attribute name="recordId" type="String" default="0012v00002STyS5AAL"/>
+    <div class="slds-page-header" role="banner">
+       <lightning:recordViewForm recordId="{!v.recordId}"
+                                objectApiName="Account">
+           <div class="slds-text-heading_label">
+              <lightning:outputField fieldName="Name"  variant="label-hidden"/>
+           </div>
+       </lightning:recordViewForm>
+       <h1 class="slds-page-header__title">Create Contact</h1>
+    </div>
+    
+    <lightning:recordEditForm objectApiName="Contact"
+                              aura:Id ="editForm"
+                              onsubmit="{!c.handleSave}"
+                              onsuccess="{!c.handleSuccess}"
+                              >
+        <lightning:messages/>
+        <lightning:inputField fieldName="FirstName" />
+        <lightning:inputField fieldName="LastName" />
+        <lightning:inputField fieldName="Title" />
+        <lightning:inputField fieldName="Phone" />
+        <lightning:inputField fieldName="Email" />
+        <div class="slds-align_absolute-center">
+            <lightning:button name="Cancel" label="Cancel"  onclick="{!c.handleCancel}"/>
+            <lightning:button name="Save" type="submit" label="Save" variant="Brand" />
+        </div>    
+    </lightning:recordEditForm>
+</aura:component>
